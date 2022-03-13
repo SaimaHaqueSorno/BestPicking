@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,14 @@ Route::get('/order',function() {
 Route::get('/product',function() {
     return view('backend.pages.product');
 });
+Route::get('/category',function() {
+    return view('backend.pages.category');
+});
 
 
 
 //Backend
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');
 Route::post('/product/post',[ProductController::class,'productPost'])->name('product.post');
+
+Route::get('/category/list',[ CategoryController::class,'categoryList'])->name('category.list');

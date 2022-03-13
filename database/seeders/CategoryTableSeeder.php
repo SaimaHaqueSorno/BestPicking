@@ -14,15 +14,15 @@ class CategoryTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+     {
         Category::create([
             'name'=>'wood',
             'details'=>'asdfghjkl',
         ]);
 
-        Category::create([
-            'name'=>'test',
-            'details'=>'qwertyuio',
-        ]);
-    }
+         Category::create([
+             'name'=>'test',
+             'details'=>'qwertyuio',
+         ]);
+     }
 }
