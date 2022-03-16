@@ -17,12 +17,21 @@ class CategoryTableSeeder extends Seeder
      {
         Category::create([
             'name'=>'wood',
-            'details'=>'asdfghjkl',
+            'quantity'=>'33',
+            'price'=>'3000',
+            'details'=>'woodeen',
+            
+        ]);
+        Category::create([
+            'name'=>'books',
+            'quantity'=>'33',
+            'price'=>'3000',
+            'details'=>'sdbdjgdueen',
+            
         ]);
 
-         Category::create([
-             'name'=>'test',
-             'details'=>'qwertyuio',
-         ]);
+
+
+        
      }
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\CategoryController;
 |
 */
 
+
 Route::get('/', function () {
     return view('backend.pages.dashboard');
 });
@@ -26,13 +27,15 @@ Route::get('/product',function() {
     return view('backend.pages.product');
 });
 Route::get('/category',function() {
-    return view('backend.pages.category');
+    return view('backend.pages.categorylist');
 });
 
 
 
 //Backend
+Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');
 Route::post('/product/post',[ProductController::class,'productPost'])->name('product.post');
 
-Route::get('/category/list',[ CategoryController::class,'categoryList'])->name('category.list');
+
+Route::get('/category/list',[CategoryController::class,'categoryList'])->name('category.list');

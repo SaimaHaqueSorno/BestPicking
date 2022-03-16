@@ -12,7 +12,7 @@ class CategoryController extends Controller
 
         $categories=Category::all();
         //dd($request->all());
-    return view('backend.pages.category',compact('categories'));
+    return view('backend.pages.categorylist',compact('categories'));
 
     }
 }

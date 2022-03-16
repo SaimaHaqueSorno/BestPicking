@@ -8,17 +8,25 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function productlist(){
+        $products = Product::all();
+        return view('backend.pages.productlist',compact('products'));
+    } 
+
     public function productForm(){
         return view('backend.pages.product');
-} 
-public function ProductPost(Request $request){
-    // dd($request->all());
-    Product::create([
-        'name'=>$request->product_name,
-        'details'=>$request->product_details
-    ]);
+    }
 
-    return redirect()->back();
-}
+    public function productPost(Request $request){
+        // dd($request->all());
+        Product::create([
+            'name'=>$request->name,
+            'quantity'=>$request->quantity,
+            'price'=>$request->price,
+            'details'=>$request->details,
+        ]);
+
+        return redirect()->route('product.list');
+    }
 
 }

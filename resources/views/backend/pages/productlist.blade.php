@@ -1,0 +1,41 @@
+@extends('master')
+
+@section('content')
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Product</h1>
+
+    <a class="btn btn-success" href="{{route('product.form')}}">Create New Product</a>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Serial</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Details</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach($products as $key=>$singleproduct)
+    <tr>
+      <th scope="row">{{$key+1}}</th>
+    
+      <td>{{$singleproduct->name}}</td>
+      <td>{{$singleproduct->quantity}}</td>
+      <td>{{$singleproduct->price}}</td>
+      <td>{{$singleproduct->details}}</td>
+      <td>{{$singleproduct->action}}
+          <a class="btn btn-primary" href="">Edit</a>
+          <a class="btn btn-danger" href="">Delete</a>
+         
+      </td>
+    </tr>
+   @endforeach
+    </tbody>
+</table>
+@endsection

@@ -4,19 +4,25 @@
 
 <form action="{{route('product.post')}}" method="POST">
     @csrf
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+    
+    <div class="mb-3">
+ 
+  <label for="formGroupExampleInput" class="form-label">Product Name</label>
+  <input name="name"type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter name">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Quantity</label>
+  <input name="quantity" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter quantity">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Price</label>
+  <input name="price" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter price">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Details</label>
+  <input name="details" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter details">
+</div>
+  
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> 
 @endsection
