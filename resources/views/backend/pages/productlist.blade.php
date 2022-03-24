@@ -13,6 +13,7 @@
     <tr>
         <th scope="col">Serial</th>
         <th scope="col">Name</th>
+        <th scope="col">Category Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Price</th>
         <th scope="col">Details</th>
@@ -26,6 +27,7 @@
       <th scope="row">{{$key+1}}</th>
     
       <td>{{$singleproduct->name}}</td>
+      <td>{{$singleproduct->category->name}}</td>
       <td>{{$singleproduct->quantity}}</td>
       <td>{{$singleproduct->price}}</td>
       <td>{{$singleproduct->details}}</td>

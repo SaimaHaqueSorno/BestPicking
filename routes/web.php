@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,21 @@ Route::get('/product',function() {
 Route::get('/category',function() {
     return view('backend.pages.categorylist');
 });
+Route::get('/customer',function(){
+    return view('backend.pages.customer');
+});
 
 
 
 //Backend
+
+Route::get('/category/list',[CategoryController::class,'categoryList'])->name('category.list');
+Route::get('/category/form',[CategoryController::class,'categoryForm'])->name('category.form');
+Route::post('/category/post',[CategoryController::class,'categoryPost'])->name('category.post');
+
 Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');
 Route::post('/product/post',[ProductController::class,'productPost'])->name('product.post');
 
+Route::get('/customer/list',[CustomerController::class,'customerlist'])->name('customer.list');
 
-Route::get('/category/list',[CategoryController::class,'categoryList'])->name('category.list');

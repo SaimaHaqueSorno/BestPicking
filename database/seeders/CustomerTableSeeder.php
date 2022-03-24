@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use\App\Models\Custoder;
+use\App\Models\Customer;
 use Illuminate\Database\Seeder;
 
 class CustomerTableSeeder extends Seeder
@@ -13,6 +13,12 @@ class CustomerTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+      Customer::create([
+          'name'=>'Runa',
+          'contact'=>'0154656459',
+          'email'=>'Runa12@gmail.com',
+          'address'=>'Uttara,12/1230',
+
+      ]);
     }
 }

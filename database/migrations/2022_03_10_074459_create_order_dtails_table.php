@@ -15,6 +15,11 @@ class CreateOrderDtailsTable extends Migration
     {
         Schema::create('order_dtails', function (Blueprint $table) {
             $table->id();
+            $table->string('customer');
+            $table->string('location');
+            $table->date('date');
+            $table->string('status');
+            $table->float('net_amount');
             $table->timestamps();
         });
     }

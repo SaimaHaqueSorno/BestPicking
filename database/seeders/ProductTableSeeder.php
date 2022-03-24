@@ -13,14 +13,14 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        Product::create([
-            'name'=>'wood',
-            'quantity'=>'33',
-            'price'=>'3000',
-            'details'=>'woodeen',
+        // Product::create([
+        //     'name'=>'wood',
+        //     'quantity'=>'33',
+        //     'price'=>'3000',
+        //     'details'=>'woodeen',
             
             
 
-        ]);
+        // ]);
     }
 }
