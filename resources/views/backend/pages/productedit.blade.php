@@ -1,15 +1,14 @@
 @extends('master')
 @section('content')
 
-
-<form action="{{route('product.post')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.update',$product->id)}}" method="POST">
+    @method('PUT')
     @csrf
-    
-    <div class="mb-3">
- 
+    <input type="hidden" value="{{$product->id}}" name="product_name">
+  <div class="mb-3">
   <label for="formGroupExampleInput" class="form-label">Product Name</label>
-  <input name="name"type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter name">
-</div>
+  <input value="{{$product->name}}" name="name"type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter name">
+  </div>
 
 <div class="mb-3">
   <label for="category" class="form-label">Category Name</label>
@@ -17,27 +16,25 @@
    @foreach($categories as $singleBiscuit)
        <option value="{{$singleBiscuit->id}}">{{$singleBiscuit->name}}</option>
     @endforeach
-
  </select>
 </div>
 
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Quantity</label>
-  <input name="quantity" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter quantity">
+  <input value="{{$product->quantity}}" name="quantity" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter quantity">
 </div>
+
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Price</label>
-  <input name="price" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter price">
+  <input value="{{$product->price}}" name="price" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter price">
 </div>
-<div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Image</label>
-  <input name="image" type="file" class="form-control" id="image" >
-</div>
+
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Details</label>
-  <input name="details" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter details">
+  <input value="{{$product->details}}" name="details" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter details">
 </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
 </form> 
+
 @endsection

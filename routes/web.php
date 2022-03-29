@@ -45,6 +45,8 @@ Route::post('/category/post',[CategoryController::class,'categoryPost'])->name('
 Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');
 Route::post('/product/post',[ProductController::class,'productPost'])->name('product.post');
+Route::get('/product/delete/{id}',[ProductController::class,'productDelete'])->name('product.delete');
+Route::get('/product/edit/{id}',[ProductController::class,'productEdit'])->name('product.edit');
+Route::put('/product/update/{id}',[ProductController::class,'productUpdate'])->name('product.update');
 
 Route::get('/customer/list',[CustomerController::class,'customerlist'])->name('customer.list');
-

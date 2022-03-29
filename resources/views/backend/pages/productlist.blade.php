@@ -16,6 +16,7 @@
         <th scope="col">Category Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Price</th>
+        <th scope="col">Image</th>
         <th scope="col">Details</th>
         <th scope="col">Action</th>
     </tr>
@@ -30,10 +31,11 @@
       <td>{{$singleproduct->category->name}}</td>
       <td>{{$singleproduct->quantity}}</td>
       <td>{{$singleproduct->price}}</td>
+      <td>{{$singleproduct->image}}</td>
       <td>{{$singleproduct->details}}</td>
       <td>{{$singleproduct->action}}
-          <a class="btn btn-primary" href="">Edit</a>
-          <a class="btn btn-danger" href="">Delete</a>
+          <a class="btn btn-primary" href="{{route('product.edit',$singleproduct->id)}}">Edit</a>
+          <a class="btn btn-danger" href="{{route('product.delete',$singleproduct->id)}}">Delete</a>
          
       </td>
     </tr>
