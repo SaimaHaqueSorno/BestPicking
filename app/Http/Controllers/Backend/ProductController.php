@@ -25,9 +25,18 @@ class ProductController extends Controller
 
     public function productPost(Request $request){
   
+        $request->validate([
+            'name'=>'required',
+            'category_id'=>'required',
+            'quantity'=>'required | integer' ,
+            'price'=>'required|numeric',
+            'image'=>'image',
+            'details'=>'required',
+        ]);
+        // dd($request->all());
       try
       {
-        $filename=null;
+        $filename= null;
         if($request->hasfile('image')){
             $file=$request->file('image');
             $filename=date('ymdhis').'.'.$file->getClientOriginalExtension();
@@ -82,12 +91,14 @@ public function productEdit($id){
 public function productUpdate(Request $request,$id){
     // dd($request->all(),$id);
     $product=Product::find($id);
+    $filename = $product->image;
     if($product){
         $product->update([
             'name'=>$request->name,
             'category_id'=>$request->category_id,
             'quantity'=>$request->quantity,
             'price'=>$request->price,
+            'image'=>$filename,
             'details'=>$request->details,
         ]);
         return redirect()->route('product.list');

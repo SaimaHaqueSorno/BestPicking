@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 
-<form action="{{route('product.update',$product->id)}}" method="POST">
+<form action="{{route('product.update',$product->id)}}" method="POST" enctype="multipart/data-form">
     @method('PUT')
     @csrf
     <input type="hidden" value="{{$product->id}}" name="product_name">
@@ -28,6 +28,10 @@
   <label for="formGroupExampleInput2" class="form-label">Price</label>
   <input value="{{$product->price}}" name="price" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter price">
 </div>
+<div class="form-group">
+        <label for="exampleInputEmail1">Image</label>
+        <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
 
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Details</label>

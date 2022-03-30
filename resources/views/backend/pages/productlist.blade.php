@@ -31,7 +31,9 @@
       <td>{{$singleproduct->category->name}}</td>
       <td>{{$singleproduct->quantity}}</td>
       <td>{{$singleproduct->price}}</td>
-      <td>{{$singleproduct->image}}</td>
+      <td>
+        <img width="150px" src="{{url('/uploads',$singleproduct->image)}}" alt="product image">
+      </td>
       <td>{{$singleproduct->details}}</td>
       <td>{{$singleproduct->action}}
           <a class="btn btn-primary" href="{{route('product.edit',$singleproduct->id)}}">Edit</a>
