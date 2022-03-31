@@ -1,7 +1,14 @@
 @extends('master')
 @section('content')
 
-
+<div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <p>
+                <span class="btn btn-danger">{{$error}}</span></p>
+        @endforeach
+    @endif
+</div>
 <form action="{{route('product.post')}}" method="POST" enctype="multipart/form-data">
     @csrf
     

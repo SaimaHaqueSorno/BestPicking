@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('customer.list')}}">
+            <a class="nav-link" href="">
               <span data-feather="users"></span>
               Customers
             </a>
