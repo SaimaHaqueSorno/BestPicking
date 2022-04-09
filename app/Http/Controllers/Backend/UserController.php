@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -27,7 +28,11 @@ class UserController extends Controller
 
  public function logout(){
      auth()->logout();
-     
-     return redirect()->route('admin.logout')->with('message','Logout Successfully');
+
+     return redirect()->route('admin.login')->with('message','Logout Successfully');
+ }
+ public function userList(){
+     $users=User::all();
+     return view('backend.pages.user',compact('users'));
  }
 }

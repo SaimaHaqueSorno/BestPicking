@@ -5,6 +5,9 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\UserController as frontendUser;
+
+use App\Http\Controllers\Frontend\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,17 @@ use App\Http\Controllers\Backend\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ //Frontend
+ Route::get('/home',[HomeController::class,'home'])->name('home');
+ Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
+ Route::post('/customer/registration',[frontendUser::class,'customerRegistration'])->name('customer.registration');
+
+ Route::post('/customer/login',[frontendUser::class,'login'])->name('customer.login');
+
+
+
+
+
 //Backend
 
 
@@ -57,5 +71,6 @@ Route::get('/product/delete/{id}',[ProductController::class,'productDelete'])->n
 Route::get('/product/edit/{id}',[ProductController::class,'productEdit'])->name('product.edit');
 Route::put('/product/update/{id}',[ProductController::class,'productUpdate'])->name('product.update');
 
+Route::get('/user/list',[UserController::class,'userList'])->name('user.list');
 
 });

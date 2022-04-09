@@ -18,6 +18,7 @@ class UserstableSeeder extends Seeder
 
             'name'=>'sorno',
             'email'=>'sorno@gmail.com',
+            'role'=>'admin',
             'password'=>bcrypt('121212'),
         ]);
     }

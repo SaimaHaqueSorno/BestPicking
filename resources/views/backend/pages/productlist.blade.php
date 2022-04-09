@@ -32,7 +32,7 @@
       <td>{{$singleproduct->quantity}}</td>
       <td>{{$singleproduct->price}}</td>
       <td>
-        <img width="150px" src="{{url('/uploads',$singleproduct->image)}}" alt="product image">
+        <img width="100px"  height="80px" src="{{url('/uploads',$singleproduct->image)}}" alt="product image">
       </td>
       <td>{{$singleproduct->details}}</td>
       <td>{{$singleproduct->action}}

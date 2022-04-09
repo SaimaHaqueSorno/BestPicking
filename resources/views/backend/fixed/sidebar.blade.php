@@ -14,9 +14,21 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('product.list')}}">
+              <span data-feather="file"></span>
+              Brand
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('category.list')}}">
               <span data-feather="layers"></span>
               Category
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('category.list')}}">
+              <span data-feather="layers"></span>
+              Sub-Category
             </a>
           </li>
           <li class="nav-item">
@@ -25,8 +37,23 @@
               Order
             </a>
           </li>
+        
           <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+               OrderDetails
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+               Stock
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('user.list')}}">
               <span data-feather="users"></span>
               Customers
             </a>
@@ -34,7 +61,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
-               OrderDetails
+               Payment
             </a>
           </li>
           </ul>
