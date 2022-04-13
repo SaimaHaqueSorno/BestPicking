@@ -32,15 +32,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('order.list')}}">
               <span data-feather="shopping-cart"></span>
               Order
             </a>
           </li>
         
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
+            <a class="nav-link" href="{{route('order.details')}}">
+              <span data-feather="shopping-cart"></span>
                OrderDetails
             </a>
           </li>

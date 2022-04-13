@@ -14,6 +14,11 @@ class HomeController extends Controller
         $products=Product::all();
         return view('frontend.pages.home',compact('products'));
     }
+   
+    public function showProduct($product_id){
+        $product=Product::find($product_id);
+          return view('frontend.pages.product',compact('product'));
 
+    }
 
 }

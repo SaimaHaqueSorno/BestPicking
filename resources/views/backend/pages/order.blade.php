@@ -6,31 +6,36 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Serial</th>
+        <th scope="col">User Id</th>
+        <th scope="col">Receiver First Name</th>
+        <th scope="col">Receiver Last Name</th>
+        <th scope="col">Receiver Email</th>
+        <th scope="col">Receiver Address</th>
+        <th scope="col">Total</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
+        @foreach($orders as $key=>$order)
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">{{$key+1}}</th>
+        <td>{{$order->user_id}}</td>
+        <td>{{$order->receiver_first_name}}</td>
+        <td>{{$order->receiver_last_name}}</td>
+        <td>{{$order->receiver_email}}</td>
+        <td>{{$order->receiver_address}}</td>
+        <td>{{$order->total}}</td>
+        <td>{{$order->payment_method}}</td>
+        <td>{{$order->action}}
+        <a  href="#" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></a>  
+        <a  href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+ 
+        </td>
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+    @endforeach
+    
     </tbody>
 </table>
 @endsection
