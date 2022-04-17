@@ -20,6 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('quantity');
             $table->double('unit_price');
             $table->double('subtotal');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

@@ -1,17 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\OrderController as backendOrder;
-
-
-
-use App\Http\Controllers\Frontend\UserController as frontendUser;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\SearchController;
+
+
+
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\OrderController as backendOrder;
+use App\Http\Controllers\Frontend\UserController as frontendUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ use App\Http\Controllers\Frontend\OrderController;
  Route::get('/home',[HomeController::class,'home'])->name('home');
  Route::get('/product/view/{id}',[HomeController::class,'showProduct'])->name('product.view');
 
+ //product search by name
+ Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
 
  Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
  Route::post('/customer/registration',[frontendUser::class,'customerRegistration'])->name('customer.registration');
@@ -65,15 +68,9 @@ Route::group(['middleware'=>'auth'],function (){
 
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
 
-    Route::get('/', function () {
-        return view('backend.pages.dashboard');
-    })->name('dashboard');
+    Route::get('/', [UserController::class,'dashboard'])->name('dashboard');
     
     
-
-    Route::get('/order/details',function() {
-        return view('backend.pages.orderDetails');    
-    })->name('order.details');
 
     Route::get('/product',function() {
         return view('backend.pages.product');

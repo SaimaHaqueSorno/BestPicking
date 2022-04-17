@@ -29,10 +29,9 @@
         <td>{{$order->total}}</td>
         <td>{{$order->payment_method}}</td>
         <td>{{$order->action}}
-        <a  href="#" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></a>  
-        <a  href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
- 
-        </td>
+        <a class="btn btn-primary" href="{{route('order.view',$order->id)}}" role="button">View</a>
+        <a class="btn btn-danger" href="#" role="button">Delete</a>
+         </td>
     </tr>
     @endforeach
     

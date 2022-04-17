@@ -20,14 +20,14 @@
     </thead>
     <tbody>
     
-    @foreach($categories as $singleBiscuit)
+    @foreach($categories as $cate)
     <tr>
      
-      <td scope="row">{{$singleBiscuit->id}}</td>
-      <td>{{$singleBiscuit->name}}</td>
-      <td>{{$singleBiscuit->quantity}}</td>
-      <td>{{$singleBiscuit->details}}</td>
-      <td>{{$singleBiscuit->Action}}
+      <td scope="row">{{$cate->id}}</td>
+      <td>{{$cate->name}}</td>
+      <td>{{$cate->quantity}}</td>
+      <td>{{$cate->details}}</td>
+      <td>{{$cate->Action}}
           <a class="btn btn-primary" href="">Edit</a>
           <a class="btn btn-danger" href="">Delete</a>
         

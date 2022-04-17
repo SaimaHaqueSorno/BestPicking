@@ -1,6 +1,8 @@
 @extends('master')
 @section('content')
-<style>body{margin-top:20px;
+
+<style>
+body{margin-top:20px;
 background:#eee;
 }
 
@@ -110,14 +112,17 @@ background:#eee;
 		width:900px;
 		height:800px;
 	}
-}</style>
+}
+
+</style>
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdeys">
 <div class="row">
   <div class="col-sm-12">
 	  	<div class="panel panel-default invoice" id="invoice">
 		  <div class="panel-body">
-			<div class="invoice-ribbon"><div class="ribbon-inner">PAID</div></div>
+			
 		    <div class="row">
 
 				<div class="col-sm-6 top-left">
@@ -125,38 +130,37 @@ background:#eee;
 				</div>
 
 				<div class="col-sm-6 top-right">
-						<h3 class="marginright">INVOICE-1234578</h3>
-						<span class="marginright">14 April 2014</span>
+						<h3 class="marginright">INVOICE</h3>
+						<span class="marginright">{{$order->created_at}}</span>
 			    </div>
 
 			</div>
 			<hr>
 			<div class="row">
-
-				<div class="col-xs-4 from">
-					<p class="lead marginbottom">From : Dynofy</p>
-					<p>350 Rhode Island Street</p>
-					<p>Suite 240, San Francisco</p>
-					<p>California, 94103</p>
-					<p>Phone: 415-767-3600</p>
-					<p>Email: contact@dynofy.com</p>
+				<div class="col-lg-4 from">
+					<p class="lead marginbottom">From : Kodeeo</p>
+					<p>House:14</p>
+					<p>Road:8</p>
+					<p>Sector:6</p>
+					<p>Uttara,Dhaka</p>
+					<p>Email:info@kodeeo.com</p>
 				</div>
 
-				<div class="col-xs-4 to">
-					<p class="lead marginbottom">To : John Doe</p>
-					<p>425 Market Street</p>
-					<p>Suite 2200, San Francisco</p>
-					<p>California, 94105</p>
-					<p>Phone: 415-676-3600</p>
-					<p>Email: john@doe.com</p>
+				<div class="col-lg-4 to">
+					<p class="lead marginbottom">To :</p>
+					<p>{{$order->receiver_first_name}}{{$order->receiver_last_name}}</p>
+					<p>{{$order->receiver_email}}</p>
+					<p>{{$order->receiver_address}}</p>
+					<!-- <p>Phone: 415-676-3600</p>
+					<p>Email: john@doe.com</p> -->
 
 			    </div>
 
-			    <div class="col-xs-4 text-right payment-details">
+			    <div class="col-lg-4 text-right payment-details">
 					<p class="lead marginbottom payment-info">Payment details</p>
-					<p>Date: 14 April 2014</p>
-					<p>VAT: DK888-777 </p>
-					<p>Total Amount: $1019</p>
+					<p>Date:{{$order->created_at}}</p>
+					<p>VAT(10%):{{$order->total*10/100}} .BDT </p>
+					<p>Total Amount: {{$order->total+($order->total*10/100)}} .BDT</p>
 					<p>Account Name: Flatter</p>
 			    </div>
 
@@ -166,59 +170,44 @@ background:#eee;
 				<table class="table table-striped">
 			      <thead>
 			        <tr>
-			          <th class="text-center" style="width:5%">#</th>
+			          <th class="text-center" style="width:5%">Serial</th>
 			          <th style="width:50%">Item</th>
 			          <th class="text-right" style="width:15%">Quantity</th>
 			          <th class="text-right" style="width:15%">Unit Price</th>
-			          <th class="text-right" style="width:15%">Total Price</th>
+			          <th class="text-right" style="width:15%">Subtotal Price</th>
 			        </tr>
 			      </thead>
 			      <tbody>
+				  @foreach($order->details as $data)
 			        <tr>
 			          <td class="text-center">1</td>
-			          <td>Flatter Theme</td>
-			          <td class="text-right">10</td>
-			          <td class="text-right">$18</td>
-			          <td class="text-right">$180</td>
+			          <td>{{$data->item->name}}</td>
+			          <td class="text-right">{{$data->quantity}}</td>
+			          <td class="text-right">{{$data->unit_price}} .BDT</td>
+			          <td class="text-right">{{$data->subtotal}} .BDT</td>
 			        </tr>
-			        <tr>
-			          <td class="text-center">2</td>
-			          <td>Flat Icons</td>
-			          <td class="text-right">6</td>
-			          <td class="text-right">$59</td>
-			          <td class="text-right">$254</td>
-			        </tr>
-			        <tr>
-			          <td class="text-center">3</td>
-			          <td>Wordpress version</td>
-			          <td class="text-right">4</td>
-			          <td class="text-right">$95</td>
-			          <td class="text-right">$285</td>
-			        </tr>
-			         <tr class="last-row">
-			          <td class="text-center">4</td>
-			          <td>Server Deployment</td>
-			          <td class="text-right">1</td>
-			          <td class="text-right">$300</td>
-			          <td class="text-right">$300</td>
-			        </tr>
+					@endforeach
+			      
+			       
+			         
 			       </tbody>
 			    </table>
 
 			</div>
 
+			<div class="col-xs-8 text-right pull-right invoice-total">
+					  <p>Subtotal : {{$data->subtotal}} .BDT</p>
+			          <p>Discount :null</p>
+			          <p>VAT (10%) :{{$order->total*10/100}} .BDT</p>
+			          <p>Total :{{$order->total+($order->total*10/100)}} .BDT</p>
+			</div>
+			
 			<div class="row">
 			<div class="col-xs-6 margintop">
 				<p class="lead marginbottom">THANK YOU!</p>
 
-				<button class="btn btn-success" id="invoice-print"><i class="fa fa-print"></i> Print Invoice</button>
+				<button class="btn btn-success" id="invoice-print"  onclick="printInvoice('invoice')"><i class="fa fa-print"></i> Print Invoice</button>
 				<button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
-			</div>
-			<div class="col-xs-6 text-right pull-right invoice-total">
-					  <p>Subtotal : $1019</p>
-			          <p>Discount (10%) : $101 </p>
-			          <p>VAT (8%) : $73 </p>
-			          <p>Total : $991 </p>
 			</div>
 			</div>
 
@@ -227,4 +216,14 @@ background:#eee;
 	</div>
 </div>
 </div>
+
+<script type="text/javascript">
+        function printInvoice(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 @endsection

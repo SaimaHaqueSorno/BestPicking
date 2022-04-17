@@ -13,8 +13,8 @@
 <div class="mb-3">
   <label for="category" class="form-label">Category Name</label>
  <select class="form-control" name="category_id" id="">
-   @foreach($categories as $singleBiscuit)
-       <option value="{{$singleBiscuit->id}}">{{$singleBiscuit->name}}</option>
+   @foreach($categories as $cate)
+       <option value="{{$cate->id}}">{{$cate->name}}</option>
     @endforeach
  </select>
 </div>
