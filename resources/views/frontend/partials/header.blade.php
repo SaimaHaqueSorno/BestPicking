@@ -15,6 +15,7 @@
                 @if(auth()->user())
                   <li><a href="">{{auth()->user()->name}}</a></li>
                   @endif
+                  
                   <!-- <p><span class="fa fa-phone"></span>00-62-658-658</p> -->
                   </ul>
                 </div>
@@ -23,7 +24,7 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                 
+                <li class="hidden-xs"><a href="{{route('user.profile')}}">My Profile</a></li>
                   <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                   <li class="hidden-xs"><a href="{{route('cart.view')}}">My Cart ({{session()->has('cart')?count(session()->get('cart')):0}})</a></li>
                   <li class="hidden-xs"><a href="{{route('checkout')}}">Checkout</a></li>
@@ -32,7 +33,7 @@
                   @endguest
                   @auth()
                   <li class="hidden-xs">
-                    <a href="#">Log Out</a>
+                    <a href="{{route('user.logout')}}">Log Out</a>
                   </li>
                   @endauth
 

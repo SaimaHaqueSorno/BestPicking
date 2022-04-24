@@ -70,7 +70,7 @@ table tr th {
                       <td data-th="Quantity" >
                       <form action="{{route('cart.update',$key)}}" method="post">
                             @csrf
-                        <input name="quantity" type="number" class="form-control-lg text-center" value="{{$cartData['quantity']}}">
+                        <input name="quantity" type="number" min="1" class="form-control-lg text-center" value="{{$cartData['quantity']}}">
                         <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                         </form>
                       </td>

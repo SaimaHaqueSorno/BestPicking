@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\SearchController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\OrderController as backendOrder;
 use App\Http\Controllers\Frontend\UserController as frontendUser;
 
@@ -36,6 +37,7 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
 
  Route::post('/customer/login',[frontendUser::class,'login'])->name('customer.login');
 
+
  
  Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
  Route::get('/cart/add/{id}',[OrderController::class,'addToCart'])->name('cart.add');
@@ -46,9 +48,17 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
 
  
 Route::group(['middleware'=>'auth'],function (){
- Route::get('/logout',[HomeController::class,'logout'])->name('logout');
- Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout');
- Route::post('/order/place',[OrderController::class,'placeOrder'])->name('order.place');
+ Route::get('/user/profile',[frontendUser::class,'userProfile'])->name('user.profile');
+ Route::get('/user/logout',[HomeController::class,'userlogout'])->name('user.logout');
+//  Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout');
+//  Route::post('/order/place',[OrderController::class,'placeOrder'])->name('order.place');
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout'); //form dekhbo
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay'); // submit korbo
+
 });
 
 
@@ -95,6 +105,7 @@ Route::put('/product/update/{id}',[ProductController::class,'productUpdate'])->n
 
 Route::get('/order/list',[backendOrder::class,'orderlist'])->name('order.list');
 Route::get('/order/view/{id}',[backendOrder::class,'viewOrder'])->name('order.view');
+Route::get('/order/delete/{id}',[backendOrder::class,'orderDelete'])->name('order.delete');
 
 Route::get('/user/list',[UserController::class,'userList'])->name('user.list');
 

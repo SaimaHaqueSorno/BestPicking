@@ -20,4 +20,16 @@ class OrderController extends Controller
         $order=Order::with('details','details.item')->find($id);
         return view('backend.pages.invoice',compact('order'));
     }
+
+    public function orderDelete($id){
+
+        $order=Order::find($id);
+        if($order){
+            $order->delete();
+            return redirect()->back();
+        } 
+        else{
+        return redirect()->back();
+        }
+    }
 }

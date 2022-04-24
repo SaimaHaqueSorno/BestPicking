@@ -12,8 +12,9 @@
         <th scope="col">Receiver Last Name</th>
         <th scope="col">Receiver Email</th>
         <th scope="col">Receiver Address</th>
+        <th scope="col">Transaction Id</th>
         <th scope="col">Total</th>
-        <th scope="col">Payment Method</th>
+        <th scope="col">Payment Status</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
@@ -26,11 +27,12 @@
         <td>{{$order->receiver_last_name}}</td>
         <td>{{$order->receiver_email}}</td>
         <td>{{$order->receiver_address}}</td>
+        <td>{{$order->tran_id}}</td>
         <td>{{$order->total}}</td>
-        <td>{{$order->payment_method}}</td>
+        <td>{{$order->payment_status}}</td>
         <td>{{$order->action}}
         <a class="btn btn-primary" href="{{route('order.view',$order->id)}}" role="button">View</a>
-        <a class="btn btn-danger" href="#" role="button">Delete</a>
+        <a class="btn btn-danger" href="{{route('order.delete',$order->id)}}" role="button">Delete</a>
          </td>
     </tr>
     @endforeach

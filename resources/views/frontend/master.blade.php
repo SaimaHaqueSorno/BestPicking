@@ -37,7 +37,7 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <![endif] -->
   
 
   </head>
@@ -68,64 +68,64 @@
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/1.jpg" alt="Men slide img" />
+                <img data-seq src="" alt="Men slide img" />
               </div>
               <div class="seq-title">
                <span data-seq></span>                
                 <h2 data-seq>Pick Your Best Choice</h2>                
                
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                <!-- <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a> -->
               </div>
             </li>
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/2.jpg" alt="slide img" />
+                <img data-seq src="" alt="slide img" />
               </div>
               <div class="seq-title">
                 <span data-seq></span>                
                 <h2 data-seq>Pick Your Best Choice</h2>                
               
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                <!-- <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a> -->
               </div>
             </li>
             <!-- single slide item -->
             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/3.jpg" alt="slide img" />
+                <img data-seq src="" alt="slide img" />
               </div>
               <div class="seq-title">
                 <span data-seq></span>                
                 <h2 data-seq>Pick Your Best Choice</h2>                
                 
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                <!-- <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a> -->
               </div>
             </li>
             <!-- single slide item -->           
-            <!-- <li>
+            <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/4.jpg" alt="slide img" />
+                <img data-seq src="" alt="slide img" />
               </div>
               <div class="seq-title">
                 <span data-seq></span>                
                 <h2 data-seq>Pick Your Best Choice</h2>                
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                <!-- <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a> -->
               </div>
-            </li> -->
+            </li>
             <!-- single slide item -->  
-             <!-- <li>
+             <li>
               <div class="seq-model">
-                <img data-seq src="img/slider/5.jpg" alt=" slide img" />
+                <img data-seq src="" alt=" slide img" />
               </div>
               <div class="seq-title">
                 <span data-seq></span>                
-                <h2 data-seq>Best Collection</h2>                
+                <h2 data-seq>Pick Your Best Choice</h2>                
                
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
+                <!-- <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a> -->
               </div>
             </li>                   
           </ul>
-        </div> -->
+        </div>
         <!-- slider navigation btn -->
         <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
           <a type="button" class="seq-prev" aria-label="Previous"><span class="fa fa-angle-left"></span></a>
@@ -135,6 +135,14 @@
     </div>
   </section>
   <!-- / slider -->
+
+
+
+
+
+
+
+
 
  @yield('content')
 
@@ -167,5 +175,16 @@
   <!-- Custom js -->
   <script src="{{url('frontend/js/custom.js')}}"></script> 
 
+<!-- for payment gateway -->
+  <script>
+        (function (window, document) {
+            var loader = function () {
+                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                tag.parentNode.insertBefore(script, tag);
+            };
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
+    </script>
   </body>
 </html>

@@ -20,8 +20,9 @@ class CreateOrdersTable extends Migration
             $table->string('receiver_last_name');
             $table->string('receiver_email');
             $table->string('receiver_address');
+            $table->string('tran_id')->default('null');
             $table->double('total',10,2);
-            $table->string('payment_method')->default('COD');
+            $table->string('payment_status')->default('pending');
             $table->timestamps();
         });
     }

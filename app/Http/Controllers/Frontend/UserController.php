@@ -46,4 +46,15 @@ class UserController extends Controller
          return redirect()->back()->with('message','Invalid Credentials.');
 
 }
+       public function userProfile(Request $request){
+        
+           $user=User::all();
+           return view('frontend.pages.profile',compact('user'));
+
+           
+       }
+
+     
+
+
 }

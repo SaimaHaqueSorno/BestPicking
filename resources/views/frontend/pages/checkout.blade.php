@@ -7,7 +7,7 @@
      <div class="row">
        <div class="col-md-12">
         <div class="checkout-area">
-        <form action="{{route('order.place')}}" method="post">
+        <form action="{{route('pay')}}" method="post">
                         @csrf
             <div class="row">
               <div class="col-md-8">
@@ -15,7 +15,7 @@
                   <div class="panel-group" id="accordion">
                     
                     <!-- Login section -->
-                    <div class="panel panel-default aa-checkout-login">
+                    <!-- <div class="panel panel-default aa-checkout-login">
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
@@ -33,7 +33,7 @@
                           <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- Billing Details -->
                     <!-- <div class="panel panel-default aa-checkout-billaddress">
                       <div class="panel-heading">
@@ -272,11 +272,13 @@
                     </table>
                   </div>
                   <h4>Payment Method</h4>
-                  <div class="aa-payment-method">                    
+                  <div class="aa-payment-method"> 
+
                     <label for="cashdelivery"><input type="radio" id="cashdelivery" name="optionsRadios"> Cash on Delivery </label>
                     <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" checked> Via Paypal </label>
                     <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">    
-                    <input type="submit" value="Place Order" class="aa-browse-btn">                
+                    <input type="submit" value="Pay Now" class="aa-browse-btn">                
+                    <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button> -->
                   </div>
                 </div>
               </div>

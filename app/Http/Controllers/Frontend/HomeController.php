@@ -20,5 +20,10 @@ class HomeController extends Controller
           return view('frontend.pages.product',compact('product'));
 
     }
+    public function userlogout(){
+        auth()->logout();
+   
+        return redirect()->route('home')->with('message','Logout Successfully');
+       }
 
 }
