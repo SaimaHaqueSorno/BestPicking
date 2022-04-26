@@ -1,7 +1,7 @@
  @extends('frontend.master')
  @section('content')
 
- @if(session()->has('message'))
+    @if(session()->has('message'))
         <p class="alert alert-success">{{session()->get('message')}}</p>
     @endif
  @foreach($products as $singleproduct)

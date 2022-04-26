@@ -48,10 +48,13 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
 
  
 Route::group(['middleware'=>'auth'],function (){
- Route::get('/user/profile',[frontendUser::class,'userProfile'])->name('user.profile');
+
+ Route::get('/user/profile/{id}',[frontendUser::class,'userProfile'])->name('user.profile');
+ Route::get('/profile/edit/{id}',[frontendUser::class,'editProfile'])->name('edit.profile');
+ Route::patch('/profile/update/{id}',[frontendUser::class,'updateProfile'])->name('update.profile');
+
  Route::get('/user/logout',[HomeController::class,'userlogout'])->name('user.logout');
-//  Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout');
-//  Route::post('/order/place',[OrderController::class,'placeOrder'])->name('order.place');
+
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);
 Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);

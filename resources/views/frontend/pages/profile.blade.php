@@ -13,22 +13,24 @@
 
 
 
-<div class="container bootstrap snippets bootdey">
-<div class="panel-body inf-content">
+<div class="container bootstrap snippets bootdey">  
+    <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
-            <img alt="image" style="width:150px;" title="" class="img-circle img-thumbnail isTooltip" src=""> 
+            <img alt="image" style="width:300px" class="img-circle img-thumbnail isTooltip" src="{{url('/uploads/'.$user->image)}}"> 
         </div>
 
         <div class="col-md-6">
-            <strong>Information</strong><br>
+            <strong><h1>Information</h1></strong>
         <div class="">
-            <button>Edit Profile</button>
+        <button> <a href="{{route('edit.profile',$user->id)}}">Edit Profile</a> </button>
         </div>
+        <br>
             <div class="table-responsive">
             <table class="table table-user-information">
                 <tbody>
-                    <tr>        
+                 
+                    <!-- <tr>        
                         <td>
                             <strong>
                                 <span class="glyphicon glyphicon-asterisk text-primary"></span>
@@ -38,7 +40,7 @@
                         <td class="text-primary">
                             123456789     
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>    
                         <td>
                             <strong>
@@ -47,33 +49,10 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            Bootdey     
+                         {{$user->name}}
                         </td>
                     </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                Lastname                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Bootstrap  
-                        </td>
-                    </tr>
-
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
-                                Username                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            bootnipets 
-                        </td>
-                    </tr>
-
+                  
 
                     <tr>        
                         <td>
@@ -83,9 +62,23 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            Admin
+                           {{$user->role}}
                         </td>
                     </tr>
+
+                    
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                Address                                            
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                    {{$user->address}}
+                        </td>
+                    </tr>
+
                     <tr>        
                         <td>
                             <strong>
@@ -94,7 +87,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            noreply@email.com  
+                           {{$user->email}}
                         </td>
                     </tr>
                     <tr>        
@@ -105,20 +98,9 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            20 jul 20014
+                          {{$user->created_at}}
                         </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                Modified                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                             20 jul 20014 20:00:00
-                        </td>
-                    </tr>                                    
+                    </tr>                         
                 </tbody>
             </table>
             </div>
@@ -126,5 +108,38 @@
     </div>
 </div>
 </div>  
+<h1>My Order List</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Serial</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Items Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">SubTotal</th>
+        <th scope="col">Payment Status</th>
+        <th scope="col">Action</th>
+    </tr>
+    <tr>
+        <th scope="row">1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+        <a class="btn btn-primary" href="" role="button">View</a>
+        <a class="btn btn-danger" href="" role="button">Delete</a>
+         </td>
+    </tr>
+    </thead>
+    <tbody>
+  
+    
+    </tbody>
+</table>
 <!-- @endsection     -->
                                   

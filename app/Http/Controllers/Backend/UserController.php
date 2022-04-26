@@ -14,7 +14,7 @@ public function dashboard()
 {
     $total_order=Order::all()->count();
     $total_product=Product::all()->count();
-    $total_customer=User::where('role','customer')->count();
+    $total_customer=User::where('role','user')->count();
 
     return view('backend.pages.dashboard',compact('total_order','total_customer','total_product'));
 }

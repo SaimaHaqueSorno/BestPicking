@@ -46,15 +46,54 @@ class UserController extends Controller
          return redirect()->back()->with('message','Invalid Credentials.');
 
 }
-       public function userProfile(Request $request){
+       public function userProfile(Request $request,$id){
         
-           $user=User::all();
+           $user=User::find($id);
            return view('frontend.pages.profile',compact('user'));
 
            
        }
 
+       public function editProfile($id){
+           $user=User::find($id);
+           if($user){
+               return view('frontend.pages.editprofile',compact('user'));
+           }else{
+               return redirect()->back();
+           }
+       }
+
+       public function updateProfile(Request $request,$id){       
+           $user=User::find($id);
+
+           $filename=$user->image;
+            if($request->hasfile('image')){
+                $file=$request->file('image');
+                $filename=date('ymdhms').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('/uploads',$filename);
+            }
+          
+           if($user){
+               $user->update([
+                   'name'=>$request->name,
+                   'address'=>$request->address,
+                   'email'=>$request->email,
+                   'image'=>$filename,
+
+               ]);
+               return redirect()->route('user.profile',$user->id);
+           }
+           else{
+               return redirect()->back();
+           }
+
+       }
+
      
 
+
+
+
+ 
 
 }

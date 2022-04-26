@@ -24,7 +24,9 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                <li class="hidden-xs"><a href="{{route('user.profile')}}">My Profile</a></li>
+                @if(auth()->user())
+                <li class="hidden-xs"><a href="{{route('user.profile',auth()->user()->id)}}">My Profile</a></li>
+                @endif
                   <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                   <li class="hidden-xs"><a href="{{route('cart.view')}}">My Cart ({{session()->has('cart')?count(session()->get('cart')):0}})</a></li>
                   <li class="hidden-xs"><a href="{{route('checkout')}}">Checkout</a></li>
