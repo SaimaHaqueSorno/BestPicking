@@ -30,7 +30,7 @@
       <td>{{$singleproduct->name}}</td>
       <td>{{$singleproduct->category->name}}</td>
       <td>{{$singleproduct->quantity}}</td>
-      <td>{{$singleproduct->price}}</td>
+      <td>{{$singleproduct->price}}.BDT</td>
       <td>
         <img width="100px"  height="80px" src="{{url('/uploads',$singleproduct->image)}}" alt="product image">
       </td>

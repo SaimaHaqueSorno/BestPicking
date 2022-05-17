@@ -30,7 +30,7 @@
 </div>
 <div class="form-group">
         <label for="exampleInputEmail1">Image</label>
-        <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
       </div>
 
 <div class="mb-3">

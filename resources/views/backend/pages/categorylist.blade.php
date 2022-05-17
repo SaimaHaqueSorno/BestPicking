@@ -15,24 +15,25 @@
         <th scope="col">Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Details</th>
+        <th scope="col">Image</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     
-    @foreach($categories as $cate)
+    @foreach($categories as $key=>$cate)
     <tr>
-     
-      <td scope="row">{{$cate->id}}</td>
+      <td scope="row">{{$key+1}}</td>
       <td>{{$cate->name}}</td>
       <td>{{$cate->quantity}}</td>
       <td>{{$cate->details}}</td>
+      <td>
+        <img width="100px"  height="80px" src="{{url('/uploads',$cate->image)}}" alt="category image">
+      </td>
       <td>{{$cate->Action}}
           <a class="btn btn-primary" href="">Edit</a>
-          <a class="btn btn-danger" href="">Delete</a>
-        
+          <a class="btn btn-danger" href="{{route('category.delete',$cate->id)}}">Delete</a>
       </td>
-    
     </tr>
     @endforeach
     </tbody>

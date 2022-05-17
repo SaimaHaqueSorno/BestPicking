@@ -26,8 +26,11 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
 |
 */
  //Frontend
+
  Route::get('/home',[HomeController::class,'home'])->name('home');
  Route::get('/product/view/{id}',[HomeController::class,'showProduct'])->name('product.view');
+ Route::post('/quantity/update/{id}',[HomeController::class,'updateQuantity'])->name('quantity.update'); 
+
 
  //product search by name
  Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
@@ -44,6 +47,7 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
  Route::get('/cart/clear',[OrderController::class,'clearCart'])->name('cart.clear');
  Route::get('/cart/delete/{id}',[OrderController::class,'deleteCart'])->name('cart.delete');
  Route::post('/cart/update/{id}',[OrderController::class,'updateCart'])->name('cart.update');
+
 
 
  
@@ -63,6 +67,8 @@ Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout'); /
 Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay'); // submit korbo
 
 });
+
+
 
 
 
@@ -98,6 +104,8 @@ Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay');
 Route::get('/category/list',[CategoryController::class,'categoryList'])->name('category.list');
 Route::get('/category/form',[CategoryController::class,'categoryForm'])->name('category.form');
 Route::post('/category/post',[CategoryController::class,'categoryPost'])->name('category.post');
+Route::get('/category/delete/{id}',[CategoryController::class,'categoryDelete'])->name('category.delete');
+
 
 Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');

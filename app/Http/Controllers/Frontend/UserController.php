@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -49,6 +50,7 @@ class UserController extends Controller
        public function userProfile(Request $request,$id){
         
            $user=User::find($id);
+           $orders=Order::where('user_id',auth()->user()->id);
            return view('frontend.pages.profile',compact('user'));
 
            

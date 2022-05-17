@@ -20,6 +20,20 @@ class HomeController extends Controller
           return view('frontend.pages.product',compact('product'));
 
     }
+
+    public function updateQuantity(Request $request,$product_id)
+    {
+       
+        $product=Product::find($product_id);
+        if($product)
+        {
+            $product->update([
+            'quantity'=>$request->quantity,
+
+            ]);
+            return redirect()->back()->with('message','Product Quantity Updated');
+        }
+    }
     public function userlogout(){
         auth()->logout();
    

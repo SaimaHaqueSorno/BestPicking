@@ -59,14 +59,7 @@ table tr th {
                       <tr>
                       <td><strong>{{$cartData['name']}}</strong><p></p></td>
                       <td><img src="{{url('/uploads/'.$cartData['image'])}}" class="img-cart"></td>
-                  
-                      <!-- <td>
-                        <form class="form-inline">
-                          <input class="form-control" type="text" value="1">
-                          <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
-                          <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
-                        </form>
-                      </td> -->
+                
                       <td data-th="Quantity" >
                       <form action="{{route('cart.update',$key)}}" method="post">
                             @csrf
@@ -122,7 +115,7 @@ table tr th {
                     </div>
                 </div>
                 </div>
-                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+                <a href="{{route('home')}}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
                 <a href="#" class="btn btn-primary ">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>

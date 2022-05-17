@@ -103,7 +103,9 @@ class OrderController extends Controller
 
     public function checkout()
     {
-        return view('frontend.pages.checkout');
+        $products=Product::all();
+        return view('frontend.pages.checkout',compact('products'));
     }
-    
+
+
 }

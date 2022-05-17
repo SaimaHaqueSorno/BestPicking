@@ -188,6 +188,9 @@ background:#eee;
                   </a> -->
               </div>
           </div>
+          @if(session()->has('message'))
+                <p class="alert alert-success">{{session()->get('message')}}</p>
+            @endif
           <div class="col-md-6">
               <h4 class="pro-d-title">
                   
@@ -196,17 +199,20 @@ background:#eee;
               </h4>
               <p>{{$product->details}}</p>
               <div class="product_meta">
-                  <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#">Jackets</a>, <a rel="tag" href="#">Men</a>, <a rel="tag" href="#">Shirts</a>, <a rel="tag" href="#">T-shirt</a>.</span>
-                  <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span>
+                  <span class="posted_in"> <strong>Categories:</strong> <a>{{$product->category->name}}</a></span>
+                  <!-- <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span> -->
               </div>
-              <div class="m-bot15"> <strong>Price : </strong> <span class="">{{$product->price}} </span></div>
-              <div class="form-group">
-                  <label>Quantity</label>
-                  <input type="quantiy" placeholder="1" class="form-control quantity">
-              </div>
-              <p>
-              <a class="btn btn-success"  href="{{route('cart.add',$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-              </p>
+              <div class="m-bot15"> <strong>Price : </strong> <span>{{$product->price}}.BDT</span></div><br>
+              
+                    <form action="{{route('quantity.update',$product->id)}}" method="post">
+                            @csrf
+                        <input name="quantity" type="number" min="1" class="form-control-lg text-center" value="{{$product['quantity']}}">
+                        <button type="submit" class="btn btn-info btn-sm"><a href=""><i class="fa fa-refresh"></i></a></button>
+                        
+                    </form>
+                      
+             <a class="btn btn-success"  href="{{route('cart.add',$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+              
           </div>
       </div>
   </section>

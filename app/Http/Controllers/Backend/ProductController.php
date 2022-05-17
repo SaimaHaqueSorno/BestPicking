@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function productForm(){
         $categories=Category::all();
+        // dd($categories);
         return view('backend.pages.product',compact('categories'));
     }
 

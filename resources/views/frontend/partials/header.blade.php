@@ -101,16 +101,11 @@
             <!-- Left nav -->
             <ul class="nav navbar-nav">
               <li><a href="{{route('home')}}">Home</a></li>
-              <li><a href="#">Men <span class="caret"></span></a>
+              <li><a href="#"><Caption></Caption>Category <span class="caret"></span></a>
                 <ul class="dropdown-menu">                
-                  <li><a href="#">Casual</a></li>
-                  <li><a href="#">Sports</a></li>
-                  <li><a href="#">Formal</a></li>
-                  <li><a href="#">Standard</a></li>                                                
-                  <li><a href="#">T-Shirts</a></li>
-                  <li><a href="#">Shirts</a></li>
-                  <li><a href="#">Jeans</a></li>
-                  <li><a href="#">Trousers</a></li>
+                  <li><a href="#">Mens</a></li>
+                  <li><a href="#">Womens</a></li>
+                  <li><a href="#">Kids</a></li>
                   <li><a href="#">And more.. <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Sleep Wear</a></li>
@@ -120,7 +115,7 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#">Women <span class="caret"></span></a>
+              <!-- <li><a href="#">Women <span class="caret"></span></a>
                 <ul class="dropdown-menu">  
                   <li><a href="#">Kurta & Kurti</a></li>                                                                
                   <li><a href="#">Trousers</a></li>              
@@ -161,8 +156,8 @@
                     </ul>
                   </li>
                 </ul>
-              </li>
-              <li><a href="#">Kids <span class="caret"></span></a>
+              </li> -->
+              <!-- <li><a href="#">Kids <span class="caret"></span></a>
                 <ul class="dropdown-menu">                
                   <li><a href="#">Casual</a></li>
                   <li><a href="#">Sports</a></li>
@@ -180,19 +175,9 @@
                     </ul>
                   </li>
                 </ul>
-              </li>
-              <li><a href="#">Sports</a></li>
-             <li><a href="#">Digital <span class="caret"></span></a>
-                <ul class="dropdown-menu">                
-                  <li><a href="#">Camera</a></li>
-                  <li><a href="#">Mobile</a></li>
-                  <li><a href="#">Tablet</a></li>
-                  <li><a href="#">Laptop</a></li>                                                
-                  <li><a href="#">Accesories</a></li>                
-                </ul>
-              </li>
-              <li><a href="#">Furniture</a></li>            
-              <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+              </li> -->
+                      
+              <li><a href="blog-archive.html">Brands <span class="caret"></span></a>
                 <ul class="dropdown-menu">                
                   <li><a href="blog-archive.html">Blog Style 1</a></li>
                   <li><a href="blog-archive-2.html">Blog Style 2</a></li>
@@ -242,73 +227,3 @@
     </div><!-- /.modal-dialog -->
   </div>   
   
-<!-- My Cart Modal -->
-
-<!-- 
-<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Your Shopping Cart
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-image">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Product</th>
-              <th scope="col">Price</th>
-              <th scope="col">Qty</th>
-              <th scope="col">SubTotal</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-       
-           @if(session()->has('cart'))
-            @foreach(session()->get('cart') as $cartData)
-
-            <tr>
-              <td class="w-25">
-                <img src=""  style="height:100px; widht: 100px;"class="img-fluid img-thumbnail" alt="Sheep">
-              </td>
-              <td>{{$cartData['name']}}</td>
-              <td data-th="Price">{{$cartData['price']}}</td>
-              <td  data-th="Quantity"><input type="text" class="form-control" id="input1" value="2">1</td>
-              <td>{{$cartData['subtotal']}}</td>
-              <td>
-                <a href="#" class="btn btn-danger btn-sm">
-                  <i class="fa fa-times"></i>
-                </a>
-              </td>
-            </tr>
-            @endforeach
-           @else
-                    <tr>
-                        <td>
-                        <h1>Your Cart is Empty.</h1>
-                        </td>
-                    </tr>
-
-
-                @endif
-
-          </tbody>
-        </table> 
-        <div class="d-flex justify-content-end">
-          <h5>Total: <span class="price text-success"></span></h5>
-        </div>
-      </div>
-      <div class="modal-footer border-top-0 d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Checkout</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- My Cart modal -->
