@@ -59,7 +59,7 @@ class SslCommerzPaymentController extends Controller
 
         #Before  going to initiate the payment order status need to update as Pending.
         $order=Order::create([
-
+            'unique_id' =>Order::orderNumber(),
             'user_id' =>auth()->user()->id,
             'tran_id' => $post_data['tran_id'],
             'receiver_first_name' =>$request->first_name,

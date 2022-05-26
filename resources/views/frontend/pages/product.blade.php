@@ -171,21 +171,19 @@ background:#eee;
       <div class="panel-body">
           <div class="col-md-6">
               <div class="pro-img-details">
-                  <img src="{{url('/uploads/'.$product->image)}}" alt="DFASF" style="height: 300px;">
+                  <img src="{{url('/uploads/'.optional($product)->image)}}" alt="DFASF" style="height: 300px;">
               </div>
               <div class="pro-img-list">
                   <a href="#">
-                      <img src="{{url('/uploads/'.$product->image)}}"  style="height:100px; widht: 100px;"alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}"  style="height:100px; widht: 100px;"alt="">
                   </a>
                   <a href="#">
-                      <img src="{{url('/uploads/'.$product->image)}}" style="height:100px; widht: 100px;" alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; widht: 100px;" alt="">
                   </a>
                   <a href="#">
-                      <img src="{{url('/uploads/'.$product->image)}}" style="height:100px; widht: 100px;"  alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; widht: 100px;"  alt="">
                   </a>
-                  <!-- <a href="#">
-                      <img src="{{url('/uploads/'.$product->image)}}" style="height:115px; widht: 100px;" alt="">
-                  </a> -->
+                  
               </div>
           </div>
           @if(session()->has('message'))
@@ -194,22 +192,16 @@ background:#eee;
           <div class="col-md-6">
               <h4 class="pro-d-title">
                   
-                  <a href="#"><h4>{{$product->name}}</h4></a>
+                  <a href="#"><h4>{{optional($product)->name}}</h4></a>
                 
               </h4>
-              <p>{{$product->details}}</p>
+              <p>{{optional($product)->details}}</p>
               <div class="product_meta">
-                  <span class="posted_in"> <strong>Categories:</strong> <a>{{$product->category->name}}</a></span>
+                  <span class="posted_in"> <strong>Categories:</strong> <a>{{optional($product->category)->name}}</a></span>
                   <!-- <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span> -->
               </div>
-              <div class="m-bot15"> <strong>Price : </strong> <span>{{$product->price}}.BDT</span></div><br>
-              
-                    <form action="{{route('quantity.update',$product->id)}}" method="post">
-                            @csrf
-                        <input name="quantity" type="number" min="1" class="form-control-lg text-center" value="{{$product['quantity']}}">
-                        <button type="submit" class="btn btn-info btn-sm"><a href=""><i class="fa fa-refresh"></i></a></button>
-                        
-                    </form>
+              <div class="m-bot15"> <strong>Price : </strong> <span>{{optional($product)->price}}.BDT</span></div><br>
+            
                       
              <a class="btn btn-success"  href="{{route('cart.add',$product->id)}}"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
               

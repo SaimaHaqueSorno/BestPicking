@@ -17,30 +17,19 @@
     <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
-            <img alt="image" style="width:300px" class="img-circle img-thumbnail isTooltip" src="{{url('/uploads/'.$user->image)}}"> 
+            <img alt="image" style="width:300px" class="img-circle img-thumbnail isTooltip" src="{{url('/uploads/'. auth()->user()->image)}}"> 
         </div>
 
         <div class="col-md-6">
             <strong><h1>Information</h1></strong>
         <div class="">
-        <button> <a href="{{route('edit.profile',$user->id)}}">Edit Profile</a> </button>
+        <button> <a href="{{route('edit.profile',auth()->user()->id)}}">Edit Profile</a> </button>
         </div>
         <br>
             <div class="table-responsive">
             <table class="table table-user-information">
                 <tbody>
                  
-                    <!-- <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                Identificacion                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            123456789     
-                        </td>
-                    </tr> -->
                     <tr>    
                         <td>
                             <strong>
@@ -49,7 +38,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                         {{$user->name}}
+                         {{auth()->user()->name}}
                         </td>
                     </tr>
                   
@@ -62,7 +51,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                           {{$user->role}}
+                           {{auth()->user()->role}}
                         </td>
                     </tr>
 
@@ -75,7 +64,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                    {{$user->address}}
+                    {{auth()->user()->address}}
                         </td>
                     </tr>
 
@@ -87,7 +76,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                           {{$user->email}}
+                           {{auth()->user()->email}}
                         </td>
                     </tr>
                     <tr>        
@@ -98,7 +87,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                          {{$user->created_at}}
+                          {{auth()->user()->created_at}}
                         </td>
                     </tr>                         
                 </tbody>
@@ -114,30 +103,24 @@
     <tr>
         <th scope="col">Serial</th>
         <th scope="col">Order Id</th>
-        <th scope="col">Items Name</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Unit Price</th>
-        <th scope="col">SubTotal</th>
+        <th scope="col">Total</th>
         <th scope="col">Payment Status</th>
         <th scope="col">Action</th>
     </tr>
+    </thead>
+    <tbody>
+    @foreach($order as $key=>$data)
     <tr>
-        <th scope="row">1</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        
+        <th scope="row">{{$key+1}}</th>
+        <td>{{$data->unique_id}}</td>
+        <td>{{$data->total}}.BDT</td>
+        <td>{{$data->payment_status}}</td>
         <td>
-        <a class="btn btn-primary" href="" role="button">View</a>
+        <a class="btn btn-primary" href="{{route('details.view',$data->id)}}" role="button">Details</a>
         <a class="btn btn-danger" href="" role="button">Delete</a>
          </td>
     </tr>
-    </thead>
-    <tbody>
-  
+    @endforeach
     
     </tbody>
 </table>

@@ -55,7 +55,7 @@ table tr th {
                   <tbody>
                   @if(session()->has('cart'))
                   
-                  @foreach(session()->get('cart') as $key=>$cartData)
+                  @foreach($getCart as $key=>$cartData)
                       <tr>
                       <td><strong>{{$cartData['name']}}</strong><p></p></td>
                       <td><img src="{{url('/uploads/'.$cartData['image'])}}" class="img-cart"></td>
@@ -79,17 +79,15 @@ table tr th {
                                 <tr>
                                     <td colspan="6">&nbsp;</td>
                                 </tr>
-                                <!-- <tr>
-                                    <td colspan="4" class="text-right">Total Product</td>
-                                    <td>$86.00</td>
-                                </tr>
+                            
                                 <tr>
-                                    <td colspan="4" class="text-right">Total Shipping</td>
-                                    <td>$2.00</td>
-                                </tr> -->
+                                    <td colspan="4" class="text-right"><strong>VAT(5%)</strong></td>
+                                    <td>{{$cartData['subtotal']*5/100}} .BDT</td>
+                                </tr>
+                               
                                 <tr>
                                     <td colspan="4" class="text-right"><strong>Total</strong></td>
-                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))}} .BDT</td>
+                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))+$cartData['subtotal']*5/100}} .BDT</td>
                                 </tr>
                               
     

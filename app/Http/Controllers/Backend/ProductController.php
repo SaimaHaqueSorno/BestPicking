@@ -31,18 +31,15 @@ class ProductController extends Controller
             'category_id'=>'required',
             'quantity'=>'required | integer' ,
             'price'=>'required|numeric',
-            'image'=>'image',
             'details'=>'required',
         ]);
-        // dd($request->all());
-      try
-      {
+        
+        
+      
         $filename= null;
         if($request->hasfile('image')){
             $file=$request->file('image');
             $filename=date('ymdhis').'.'.$file->getClientOriginalExtension();
-            // dd($filename);
-            // Storage::put('/uploads',$filename);
             $file->storeAs('/uploads',$filename);
         }
         Product::create([
@@ -53,10 +50,7 @@ class ProductController extends Controller
             'image'=>$filename,
             'details'=>$request->details,
         ]);
-      }catch(Throwable $exception)
-      {
-        dd($exception->getMessage());
-      }
+      
        
 
         return redirect()->route('product.list');
@@ -90,8 +84,8 @@ public function productEdit($id){
 
 
 public function productUpdate(Request $request,$id){
-    // dd($request->all(),$id);
     $product=Product::find($id);
+    
     $filename = $product->image;
     if($product){
         $product->update([

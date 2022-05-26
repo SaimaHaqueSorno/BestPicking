@@ -83,30 +83,31 @@
                       <thead>
                         <tr>
                           <th>Product</th>
-                          <th>Total</th>
+                          <th>Unit Price</th>
+                          <th>Qty</th>
+                          <th>SubTotal</th>
                         </tr>
                       </thead>
                       <tbody>
                       @foreach(session()->get('cart') as $cartData)
                         <tr>
-                          <td>{{$cartData['name']}} </td>
-                          <td>{{$cartData['price']}}  x  {{$cartData['quantity']}}</td>
+                          <td>{{$cartData['name']}}</td>
+                          <td>{{$cartData['price']}}</td>
+                          <td>{{$cartData['quantity']}}</td>
+                          <td>{{$cartData['subtotal']}}.BDT</td>
                         </tr>
                        @endforeach
          
                       </tbody>
+                      <tr></tr>
                       <tfoot>
                         <tr>
-                          <th>Subtotal</th>
-                          <td>{{$cartData['subtotal']}}</td>
+                        <th>VAT(5%)</th>
+                        <td>{{$cartData['subtotal']*5/100}} .BDT</td>
                         </tr>
-                         <!-- <tr>
-                          <th>Tax</th>
-                          <td>$35</td>
-                        </tr> -->
                          <tr>
                           <th>Total</th>
-                          <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))}} .BDT</td>
+                          <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))+$cartData['subtotal']*5/100}} .BDT</td>
                         </tr>
                       </tfoot>
                     </table>

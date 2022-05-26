@@ -1,5 +1,4 @@
-@extends('master')
-@section('content')
+
 
 <style>
 body{margin-top:20px;
@@ -36,11 +35,11 @@ background:#eee;
 }
 
 .invoice .table>tbody>tr>td {
-	padding:8px 20px;
+	padding:10px 30px;
 }
 
 .invoice .invoice-total {
-	margin-right:-10px;
+	margin-right:200px;
 	font-size:16px;
 }
 
@@ -107,12 +106,12 @@ background:#eee;
 	}
 }
 
-@media print {
+/* @media print {
 	.invoice {
 		width:900px;
 		height:800px;
 	}
-}
+} */
 
 </style>
 
@@ -135,7 +134,7 @@ background:#eee;
 			    </div>
 
 			</div>
-			<hr>
+			<!-- <hr> -->
 			<div class="row">
 				<div class="col-lg-4 from">
 					<p class="lead marginbottom">From : Kodeeo</p>
@@ -171,7 +170,7 @@ background:#eee;
 			      <thead>
 			        <tr>
 			          <th class="text-center" style="width:5%">Serial</th>
-			          <th style="width:50%">Item</th>
+			          <th class="text-center" style="width:50%">Item</th>
 			          <th class="text-right" style="width:15%">Quantity</th>
 			          <th class="text-right" style="width:15%">Unit Price</th>
 			          <th class="text-right" style="width:15%">Subtotal Price</th>
@@ -181,7 +180,7 @@ background:#eee;
 				  @foreach($order->details as $key=>$data)
 			        <tr>
 			          <td class="text-center">{{$key+1}}</td>
-			          <td>{{$data->item->name}}</td>
+			          <td class="text-center">{{$data->item->name}}</td>
 			          <td class="text-right">{{$data->quantity}}</td>
 			          <td class="text-right">{{$data->unit_price}} .BDT</td>
 			          <td class="text-right">{{$data->subtotal}} .BDT</td>
@@ -195,20 +194,11 @@ background:#eee;
 
 			</div>
 
-			<div class="col-xs-8 text-right pull-right invoice-total">
+			<div class="col-xs-4 text-right pull-right invoice-total">
 					  <p>Subtotal : {{$data->subtotal}} .BDT</p>
 			          <p>Discount :null</p>
 			          <p>VAT (5%) :{{$order->total*5/100}} .BDT</p>
 			          <p>Total :{{$order->total+($order->total*5/100)}} .BDT</p>
-			</div>
-			
-			<div class="row">
-			<div class="col-xs-6 margintop">
-				<p class="lead marginbottom">THANK YOU!</p>
-
-				<button class="btn btn-success" id="invoice-print"  onclick="printInvoice('invoice')"><i class="fa fa-print"></i> Print Invoice</button>
-				<button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
-			</div>
 			</div>
 
 		  </div>
@@ -217,13 +207,4 @@ background:#eee;
 </div>
 </div>
 
-<script type="text/javascript">
-        function printInvoice(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-        }
-    </script>
-@endsection
+

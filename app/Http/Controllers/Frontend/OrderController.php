@@ -13,14 +13,16 @@ class OrderController extends Controller
 {
     public function viewCart()
     {
-        return view('frontend.pages.cart');
+        $getCart = session()->get('cart') ?? "";
+    
+        return view('frontend.pages.cart',compact('getCart'));
     }
 
     public function addToCart($product_id){
         $product=Product::find($product_id);
 
         $getCart=session()->get('cart');
-
+        // dd($getCart);
         if($getCart==null)
         {
             
@@ -38,7 +40,7 @@ class OrderController extends Controller
             ];
 
              session()->put('cart',$newCart);
-                    return redirect()->back()->with('message','Product Added to Cart');
+                    return redirect()->route('cart.view')->with('message','Product Added to Cart');
                 }
                 return redirect()->back()->with('message','Product stock out.');
         }
@@ -50,7 +52,7 @@ class OrderController extends Controller
             {
           $getCart[$product_id]['subtotal']=$getCart[$product_id]['quantity']*$getCart[$product_id]['price'];
           session()->put('cart',$getCart);
-          return redirect()->back()->with('message','Product Quantity Updated');
+          return redirect()->back()->with('message','Another Quantity Added');
         }
         return redirect()->back()->with('message','Product Stock out.');
     }else
@@ -65,7 +67,7 @@ class OrderController extends Controller
                 'discount'=>5,
         ];
         session()->put('cart',$getCart);
-        return redirect()->back()->with('message','Product Added to Cart.');
+        return redirect()->route('cart.view')->with('message','Product Added to Cart.');
     }
     return redirect()->back()->with('massege','Product Stock out.');
 }

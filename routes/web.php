@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\OrderController;
-use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\SearchController;
+use App\Http\Controllers\Frontend\UserController as frontendUser;
+use App\Http\Controllers\Frontend\CategoriesController;
 
 
-
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\OrderController as backendOrder;
-use App\Http\Controllers\Frontend\UserController as frontendUser;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,42 +30,34 @@ use App\Http\Controllers\Frontend\UserController as frontendUser;
 
  Route::get('/home',[HomeController::class,'home'])->name('home');
  Route::get('/product/view/{id}',[HomeController::class,'showProduct'])->name('product.view');
- Route::post('/quantity/update/{id}',[HomeController::class,'updateQuantity'])->name('quantity.update'); 
-
 
  //product search by name
  Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
+ Route::get('/view/all/category',[CategoriesController::class,'allCategory'])->name('view.category');
 
  Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
  Route::post('/customer/registration',[frontendUser::class,'customerRegistration'])->name('customer.registration');
-
  Route::post('/customer/login',[frontendUser::class,'login'])->name('customer.login');
-
-
- 
  Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
  Route::get('/cart/add/{id}',[OrderController::class,'addToCart'])->name('cart.add');
  Route::get('/cart/clear',[OrderController::class,'clearCart'])->name('cart.clear');
  Route::get('/cart/delete/{id}',[OrderController::class,'deleteCart'])->name('cart.delete');
  Route::post('/cart/update/{id}',[OrderController::class,'updateCart'])->name('cart.update');
 
-
-
- 
 Route::group(['middleware'=>'auth'],function (){
 
  Route::get('/user/profile/{id}',[frontendUser::class,'userProfile'])->name('user.profile');
  Route::get('/profile/edit/{id}',[frontendUser::class,'editProfile'])->name('edit.profile');
  Route::patch('/profile/update/{id}',[frontendUser::class,'updateProfile'])->name('update.profile');
-
+ Route::get('/customer/view/order/details/{id}',[frontendUser::class,'detailsView'])->name('details.view');
  Route::get('/user/logout',[HomeController::class,'userlogout'])->name('user.logout');
+ Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+ Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout'); //form dekhbo
+ Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay'); // submit korbo
 
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
-Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout'); //form dekhbo
-Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay'); // submit korbo
 
 });
 

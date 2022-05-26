@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\OrderDetails;
 
 class UserController extends Controller
 {
@@ -47,12 +48,14 @@ class UserController extends Controller
          return redirect()->back()->with('message','Invalid Credentials.');
 
 }
-       public function userProfile(Request $request,$id){
-        
-           $user=User::find($id);
-           $orders=Order::where('user_id',auth()->user()->id);
-           return view('frontend.pages.profile',compact('user'));
-
+       public function userProfile($id){
+         
+     
+        //    $user=User::find($id);
+        //    $orders=Order::where('user_id',auth()->user()->id);
+           $order=Order::where('user_id',$id)->get();
+           return view('frontend.pages.profile',compact('order'));
+     
            
        }
 
@@ -67,11 +70,12 @@ class UserController extends Controller
 
        public function updateProfile(Request $request,$id){       
            $user=User::find($id);
-
+          
            $filename=$user->image;
             if($request->hasfile('image')){
                 $file=$request->file('image');
                 $filename=date('ymdhms').'.'.$file->getClientOriginalExtension();
+                // dd($filename);
                 $file->storeAs('/uploads',$filename);
             }
           
@@ -92,7 +96,12 @@ class UserController extends Controller
        }
 
      
+       public function detailsView($id){
+        $order=Order::with('details')->find($id);
+    // dd($order->details);
 
+           return view('frontend.pages.orderDetails',compact('order'));
+       }
 
 
 

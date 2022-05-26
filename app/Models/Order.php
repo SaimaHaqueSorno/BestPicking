@@ -16,4 +16,10 @@ class Order extends Model
         return $this->hasMany(OrderDetails::class);
     }
    
+    public static function orderNumber()
+    {
+        $serial = (self::latest()->first()->id ?? 0) + 1;
+        return "ODR" . date('ymd') . $serial;
+    }
 }
+
