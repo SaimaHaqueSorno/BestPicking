@@ -33,7 +33,7 @@ use App\Http\Controllers\Backend\OrderController as backendOrder;
 
  //product search by name
  Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
- Route::get('/view/all/category',[CategoriesController::class,'allCategory'])->name('view.category');
+
 
  Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
  Route::post('/customer/registration',[frontendUser::class,'customerRegistration'])->name('customer.registration');

@@ -38,7 +38,7 @@
 </div>
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Image</label>
-  <input required name="image" type="file" class="form-control" id="image" >
+  <input required name="image" type="file" class="form-control" id="image">
 </div>
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Details</label>
