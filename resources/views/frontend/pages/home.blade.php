@@ -95,7 +95,7 @@
   </div>
 </div>
      @endforeach
-
+ 
 <h2><center> Category wise Product Show</center></h2><br>
  
 <div class="owl-carousel owl-theme" style="margin-buttom:20px;">

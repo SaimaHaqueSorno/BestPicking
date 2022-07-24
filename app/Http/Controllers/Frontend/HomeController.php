@@ -11,6 +11,17 @@ use App\Models\Category;
 
 class HomeController extends Controller
 {
+
+    public function search()
+    {
+        $users=[];
+        if(\request()->has('search'))
+        {
+            $users=User::search(\request()->search)->get();
+        }
+        return view('frontend.search',compact('users'));
+    }
+
     public function home(){
         $products=Product::all();
         $categories=Category::all();

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class ApiController extends Controller
 {
@@ -11,7 +14,9 @@ class ApiController extends Controller
     {
         $users=User::all();
         $data=UserResource::collection($users);
-       return $this->responseWithSuccess($data,'User List loaded');
+       return $this->responseWithSuccess($users,'User List loaded');
+   
+  
     }
 
     public function createUser(Request $request)
@@ -45,4 +50,7 @@ class ApiController extends Controller
         }
         return $this->responseWithError('No user found.');
     }
+
+   
+
 }
