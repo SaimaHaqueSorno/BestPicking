@@ -40,7 +40,8 @@ class OrderController extends Controller
             ];
 
              session()->put('cart',$newCart);
-                    return redirect()->route('cart.view')->with('message','Product Added to Cart');
+               return redirect()->route('cart.view')->with('message','Product Added to Cart');
+                  
                 }
                 return redirect()->back()->with('message','Product stock out.');
         }

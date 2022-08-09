@@ -8,5 +8,7 @@ use\App\Model\Product;
 
 class CategoriesController extends Controller
 {
-    //
+    public function mensItem(){
+        return view('frontend.pages.mensItem');
+    }
 }

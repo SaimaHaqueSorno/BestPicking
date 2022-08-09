@@ -175,13 +175,13 @@ background:#eee;
               </div>
               <div class="pro-img-list">
                   <a href="#">
-                      <img src="{{url('/uploads/'.optional($product)->image)}}"  style="height:100px; widht: 100px;"alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}"  style="height:100px; width: 100px;"alt="">
                   </a>
                   <a href="#">
-                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; widht: 100px;" alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; width: 100px;" alt="">
                   </a>
                   <a href="#">
-                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; widht: 100px;"  alt="">
+                      <img src="{{url('/uploads/'.optional($product)->image)}}" style="height:100px; width: 100px;"  alt="">
                   </a>
                   
               </div>

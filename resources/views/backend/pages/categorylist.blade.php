@@ -24,7 +24,8 @@
     @foreach($categories as $key=>$cate)
     <tr>
       <td scope="row">{{$key+1}}</td>
-      <td>{{$cate->name}}</td>
+   
+      <td><a href="{{route('item.list',$cate->id)}}"> {{$cate->name}} </a></td>
       <td>{{$cate->quantity}}</td>
       <td>{{$cate->details}}</td>
       <td>

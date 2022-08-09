@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Backend\OrderController as backendOrder;
+use App\Http\Controllers\Backend\ItemController;
+
 
 
 /*
@@ -30,6 +32,7 @@ use App\Http\Controllers\Backend\OrderController as backendOrder;
 
  Route::get('/home',[HomeController::class,'home'])->name('home');
  Route::get('/product/view/{id}',[HomeController::class,'showProduct'])->name('product.view');
+ Route::get('/mens/item',[CategoriesController::class,'mensItem'])->name('mens.item');
 
  //product search by name
  Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
@@ -38,13 +41,15 @@ use App\Http\Controllers\Backend\OrderController as backendOrder;
  Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
  Route::post('/customer/registration',[frontendUser::class,'customerRegistration'])->name('customer.registration');
  Route::post('/customer/login',[frontendUser::class,'login'])->name('customer.login');
- Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
+
+ 
+
+Route::group(['middleware'=>'auth'],function (){
+    Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
  Route::get('/cart/add/{id}',[OrderController::class,'addToCart'])->name('cart.add');
  Route::get('/cart/clear',[OrderController::class,'clearCart'])->name('cart.clear');
  Route::get('/cart/delete/{id}',[OrderController::class,'deleteCart'])->name('cart.delete');
  Route::post('/cart/update/{id}',[OrderController::class,'updateCart'])->name('cart.update');
-
-Route::group(['middleware'=>'auth'],function (){
 
  Route::get('/user/profile/{id}',[frontendUser::class,'userProfile'])->name('user.profile');
  Route::get('/profile/edit/{id}',[frontendUser::class,'editProfile'])->name('edit.profile');
@@ -56,9 +61,6 @@ Route::group(['middleware'=>'auth'],function (){
  Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
  Route::get('/checkout',[OrderController::class,'checkout'])->name('checkout'); //form dekhbo
  Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay'); // submit korbo
-
-
-
 });
 
 
@@ -73,17 +75,10 @@ Route::group(['middleware'=>'auth'],function (){
   Route::get('/',[UserController::class,'login'])->name('admin.login');
   Route::post('/admin/do-login',[UserController::class,'doLogin'])->name('admin.do.login');
 
-
-
-
   Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
-
     Route::get('/', [UserController::class,'dashboard'])->name('dashboard');
-    
-    
-
     Route::get('/product',function() {
         return view('backend.pages.product');
     });
@@ -99,6 +94,8 @@ Route::get('/category/form',[CategoryController::class,'categoryForm'])->name('c
 Route::post('/category/post',[CategoryController::class,'categoryPost'])->name('category.post');
 Route::get('/category/delete/{id}',[CategoryController::class,'categoryDelete'])->name('category.delete');
 
+Route::get('item/{id}',[ItemController::class,'itemList'])->name('item.list');
+Route::get('item/form/{id}',[ItemController::class,'itemForm'])->name('item.form');
 
 Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');
@@ -107,10 +104,11 @@ Route::get('/product/delete/{id}',[ProductController::class,'productDelete'])->n
 Route::get('/product/edit/{id}',[ProductController::class,'productEdit'])->name('product.edit');
 Route::put('/product/update/{id}',[ProductController::class,'productUpdate'])->name('product.update');
 
+
+
 Route::get('/order/list',[backendOrder::class,'orderlist'])->name('order.list');
 Route::get('/order/view/{id}',[backendOrder::class,'viewOrder'])->name('order.view');
 Route::get('/order/delete/{id}',[backendOrder::class,'orderDelete'])->name('order.delete');
-
 Route::get('/user/list',[UserController::class,'userList'])->name('user.list');
 
 });

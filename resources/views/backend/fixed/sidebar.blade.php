@@ -10,13 +10,13 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('product.list')}}">
               <span data-feather="file"></span>
-              Product
+              Feature Product
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="">
               <span data-feather="file"></span>
-              Brand
+              Bands
             </a>
           </li>
           <li class="nav-item">

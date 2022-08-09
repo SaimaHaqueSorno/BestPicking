@@ -89,6 +89,7 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @if(session()->has('cart'))
                       @foreach(session()->get('cart') as $cartData)
                         <tr>
                           <td>{{$cartData['name']}}</td>
@@ -110,6 +111,7 @@
                           <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))+$cartData['subtotal']*5/100}} .BDT</td>
                         </tr>
                       </tfoot>
+                      @endif
                     </table>
                   </div>
                   <h4>Payment Method</h4>

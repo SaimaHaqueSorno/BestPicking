@@ -98,12 +98,12 @@
  
 <h2><center> Category wise Product Show</center></h2><br>
  
-<div class="owl-carousel owl-theme" style="margin-buttom:20px;">
+<div class="owl-carousel owl-theme" style="margin:20px";>
 @foreach($categories as $cate)
     <div class="item">
       <img style="height:300px;" src="{{url('/uploads/',$cate->image)}}" alt="img">
       <div class="card-body">
-      <a href="#"><h3 class="card-title">{{$cate->name}}</h3></a>
+      <a href=""><h3 class="card-title">{{$cate->name}}</h3></a>
     </div>
     </div>
 

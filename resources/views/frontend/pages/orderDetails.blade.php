@@ -57,11 +57,11 @@ background:#eee;
 }
 
 .ribbon-inner {
-	text-align:center;
+	/* text-align:center;
 	-webkit-transform:rotate(45deg);
 	-moz-transform:rotate(45deg);
 	-ms-transform:rotate(45deg);
-	-o-transform:rotate(45deg);
+	-o-transform:rotate(45deg); */
 	position:relative;
 	padding:7px 0;
 	left:-5px;
