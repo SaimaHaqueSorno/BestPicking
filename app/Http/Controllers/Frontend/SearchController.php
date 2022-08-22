@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
-    public function search(Request $request){
-        $search = $request['search']??"";
-        if($search !=""){
-            $product = Product::where('name','LIKE',"%$search%")->get();
-        }
-        else{
-            $product = Product::all();
-        }
-        return view('frontend.pages.search',compact('product'));
+    public function search(Request $request)
+    {
+//        dd($request->product);
+//        dd(request()->product);
+
+
+        $products=Product::where('name','like','%'.$request->product.'%')->get();
+
+        return view('frontend.layouts.search',compact('products'));
     }
 }

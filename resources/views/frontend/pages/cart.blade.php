@@ -81,13 +81,13 @@ table tr th {
                                 </tr>
                             
                                 <tr>
-                                    <td colspan="4" class="text-right"><strong>VAT(5%)</strong></td>
-                                    <td>{{$cartData['subtotal']*5/100}} .BDT</td>
+                                    <td colspan="4" class="text-right"><strong>VAT(5%) will be added in invoice.</strong></td>
+                                    <td> </td>
                                 </tr>
                                
                                 <tr>
                                     <td colspan="4" class="text-right"><strong>Total</strong></td>
-                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))+$cartData['subtotal']*5/100}} .BDT</td>
+                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))}} .BDT</td>
                                 </tr>
                               
     

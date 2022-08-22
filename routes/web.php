@@ -34,8 +34,8 @@ use App\Http\Controllers\Backend\ItemController;
  Route::get('/product/view/{id}',[HomeController::class,'showProduct'])->name('product.view');
  Route::get('/mens/item',[CategoriesController::class,'mensItem'])->name('mens.item');
 
- //product search by name
- Route::get('/search/product/by/name',[ SearchController::class,'search'])->name('search');
+
+ Route::get('/search',[ SearchController::class,'search'])->name('search');
 
 
  Route::get('/customer/registration/form',[frontendUser::class,'registrationForm'])->name('registration.form');
@@ -45,7 +45,7 @@ use App\Http\Controllers\Backend\ItemController;
  
 
 Route::group(['middleware'=>'auth'],function (){
-    Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
+ Route::get('/cart/view',[OrderController::class,'viewCart'])->name('cart.view');
  Route::get('/cart/add/{id}',[OrderController::class,'addToCart'])->name('cart.add');
  Route::get('/cart/clear',[OrderController::class,'clearCart'])->name('cart.clear');
  Route::get('/cart/delete/{id}',[OrderController::class,'deleteCart'])->name('cart.delete');
@@ -96,6 +96,7 @@ Route::get('/category/delete/{id}',[CategoryController::class,'categoryDelete'])
 
 Route::get('item/{id}',[ItemController::class,'itemList'])->name('item.list');
 Route::get('item/form/{id}',[ItemController::class,'itemForm'])->name('item.form');
+Route::post('item/post',[ItemController::class,'itemPost'])->name('item.post');
 
 Route::get('/product/list',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/product/form',[ProductController::class,'productForm'])->name('product.form');

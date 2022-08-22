@@ -12,7 +12,7 @@
     <thead>
     <tr>
         <th scope="col">Serial</th>
-        <th scope="col">Name</th>
+        <th scope="col"> Category Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Details</th>
         <th scope="col">Image</th>

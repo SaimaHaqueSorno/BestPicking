@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
 
     public function home(){
-        $products=Product::all();
+        $products=Product::Where('feature_product',1)->get();
         $categories=Category::all();
         return view('frontend.pages.home',compact('products','categories'));
     }

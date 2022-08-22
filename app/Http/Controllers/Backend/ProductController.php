@@ -13,28 +13,30 @@ class ProductController extends Controller
 {
     public function productlist(){
 
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(10);
         // dd($products);
         return view('backend.pages.productlist',compact('products'));
     } 
 
     public function productForm(){
         $categories=Category::all();
-        // dd($categories);
+    
         return view('backend.pages.product',compact('categories'));
     }
 
     public function productPost(Request $request){
+       
   
         $request->validate([
             'name'=>'required',
             'category_id'=>'required',
-            'quantity'=>'required | integer' ,
-            'price'=>'required|numeric',
+            'quantity'=>'required | integer',
+            'price'=>'required | numeric',
             'details'=>'required',
+            'feature_product'=>'required | boolean'
         ]);
         
-        
+        // dd($request->all());
       
         $filename= null;
         if($request->hasfile('image')){
@@ -49,6 +51,7 @@ class ProductController extends Controller
             'price'=>$request->price,
             'image'=>$filename,
             'details'=>$request->details,
+            'feature_product'=>$request->feature_product,
         ]);
       
        
@@ -95,6 +98,7 @@ public function productUpdate(Request $request,$id){
             'price'=>$request->price,
             'image'=>$filename,
             'details'=>$request->details,
+            'feature_product'=>$request->feature_product,
         ]);
         return redirect()->route('product.list');
     }

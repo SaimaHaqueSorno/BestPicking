@@ -4,15 +4,13 @@
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">All {{$items->name}} Products</h1>
-
-    <a class="btn btn-success" href="{{route('item.form', $items->id)}}">Add New Item</a>
 </div>
 
 <table class="table">
     <thead>
     <tr>
         <th scope="col">Serial</th>
-        <th scope="col">Name</th>
+        <th scope="col">Product Name</th>
         <th scope="col">Category Name</th>
         <th scope="col">Quantity</th>
         <th scope="col">Price</th>
@@ -24,9 +22,9 @@
     <tbody>
 
    @foreach($products as $key=>$item)
+
     <tr>
-      <th scope="row">{{$key+1}}</th>
-    
+    <th scope="row">{{$key+1}}</th>
       <td>{{$item->name}}</td>
       <td>{{$item->category->name}}</td>
       <td>{{$item->quantity}}</td>
