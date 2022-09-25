@@ -72,7 +72,7 @@ class SslCommerzPaymentController extends Controller
     
 
         // step 2 insert product into order details
-        foreach(session()->get('cart') as $product_id=>$cartData)
+        foreach(session()->get('cart') as $product_id => $cartData)
         {
             OrderDetails::create([
                 'order_id'=>$order->id,

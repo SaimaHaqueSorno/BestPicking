@@ -51,8 +51,7 @@ class UserController extends Controller
        public function userProfile($id){
          
      
-        //    $user=User::find($id);
-        //    $orders=Order::where('user_id',auth()->user()->id);
+       
            $order=Order::where('user_id',$id)->get();
            return view('frontend.pages.profile',compact('order'));
      
@@ -97,7 +96,7 @@ class UserController extends Controller
 
      
        public function detailsView($id){
-        $order=Order::with('details')->find($id);
+        $order = Order::with('details')->find($id);
     // dd($order->details);
 
            return view('frontend.pages.orderDetails',compact('order'));

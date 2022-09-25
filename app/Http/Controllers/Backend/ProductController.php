@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function productlist(){
 
         $products = Product::with('category')->paginate(10);
-        // dd($products);
+        //  dd($products);
         return view('backend.pages.productlist',compact('products'));
     } 
 

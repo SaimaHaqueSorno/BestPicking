@@ -26,9 +26,8 @@
         @foreach($products as $key=>$singleproduct)
         <tr>
             <th scope="row">{{$key+1}}</th>
-
             <td>{{$singleproduct->name}}</td>
-            <td>{{$singleproduct->category->name}}</td>
+            <td>{{($singleproduct->category)->name}}</td>
             <td>{{$singleproduct->quantity}}</td>
             <td>{{$singleproduct->price}}.BDT</td>
             <td>
@@ -38,7 +37,6 @@
             <td>{{$singleproduct->action}}
                 <a class="btn btn-primary" href="{{route('product.edit',$singleproduct->id)}}">Edit</a>
                 <a class="btn btn-danger" href="{{route('product.delete',$singleproduct->id)}}">Delete</a>
-
             </td>
         </tr>
         @endforeach

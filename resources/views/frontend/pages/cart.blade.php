@@ -67,9 +67,9 @@ table tr th {
                         <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                         </form>
                       </td>
-                      <td data-th="Price">{{$cartData['price']}}.BDT</td>
+                      <td data-th="Price">{{$cartData['price']}}.00BDT</td>
                       
-                    <td data-th="Subtotal" class="">{{$cartData['subtotal']}}.BDT</td>
+                    <td data-th="Subtotal" class="">{{$cartData['subtotal']}}.00BDT</td>
                     <td class="actions" data-th="">
                         <a  href="{{route('cart.delete',$key)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
                     </td>
@@ -79,15 +79,19 @@ table tr th {
                                 <tr>
                                     <td colspan="6">&nbsp;</td>
                                 </tr>
-                            
-                                <tr>
-                                    <td colspan="4" class="text-right"><strong>VAT(5%) will be added in invoice.</strong></td>
-                                    <td> </td>
-                                </tr>
                                
                                 <tr>
-                                    <td colspan="4" class="text-right"><strong>Total</strong></td>
-                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))}} .BDT</td>
+                                    <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))}}.00BDT</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>VAT(5%):</strong></td>
+                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal'))*5/100}}.00BDT </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
+                                    <td>{{array_sum(array_column(session()->get('cart'),'subtotal')) + 
+                                        array_sum(array_column(session()->get('cart'),'subtotal'))*5/100}}.00BDT</td>
                                 </tr>
                               
     

@@ -1,229 +1,153 @@
-@extends('master')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-body{margin-top:20px;
-background:#eee;
-}
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Invoice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
 
-/*Invoice*/
-.invoice .top-left {
-    font-size:65px;
-	color:#3ba0ff;
-}
+<body>
+    <div class="container bootdey" id="invoice-print">
+        <div class="row invoice row-printable">
+            <div class="col-md-10">
+                <!-- col-lg-12 start here -->
+                <div class="panel panel-default plain" id="dash_0">
+                    <!-- Start .panel -->
+                    <div class="panel-body p30">
+                        <div class="row">
+                            <!-- Start .row -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-logo"><img width="100"
+                                        src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Invoice logo">
+                                </div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-from">
+                                    <ul class="list-unstyled text-right">
+                                        <li>Dash LLC</li>
+                                        <li>2500 Ridgepoint Dr, Suite 105-C</li>
+                                        <li>Austin TX 78754</li>
+                                        <li>VAT Number EU826113958</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-12">
+                                <!-- col-lg-12 start here -->
+                                <div class="invoice-details mt25">
+                                    <div class="well">
+                                        <ul class="list-unstyled mb0">
+                                            <li><strong>Invoice</strong> #936988</li>
+                                            <li><strong>Invoice Date:</strong> {{$order->created_at}}</li>
+                                            <li><strong>VAT(5%):</strong>{{$order->total*5/100}} .BDT </li>
+                                            <li><strong>Grand Total:</strong> {{$order->total+($order->total*5/100)}}
+                                                .BDT </li>
+                                            <li><strong>Status:</strong> <span
+                                                    class="label label-danger">{{$order->status}}</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="invoice-to mt25">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Invoiced To</strong></li>
+                                        <li>{{$order->receiver_first_name}}{{$order->receiver_last_name}}</li>
+                                        <li>{{$order->receiver_email}}</li>
+                                        <li>{{$order->receiver_address}}</li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div class="invoice-items">
+                                    <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="per70 text-center">Serial</th>
+                                                    <th class="per70 text-center">Product Name</th>
+                                                    <th class="per5 text-center">Quantity</th>
+                                                    <th class="per25 text-center">Unit Price</th>
+                                                    <th class="per25 text-center">Subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($order->details as $key=>$data)
+                                                <tr>
+                                                    <td class="text-center">{{$key+1}}</td>
+                                                    <td class="text-center">{{$data->item->name}}</td>
+                                                    <td class="text-center">{{$data->quantity}}</td>
+                                                    <td class="text-center">{{$data->unit_price}}</td>
+                                                    <td class="text-center">{{$data->subtotal}}</td>
+                                                </tr>
 
-.invoice .top-right {
-	text-align:right;
-	padding-right:20px;
-}
+                                            </tbody>
+                                            @endforeach
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="4" class="text-right">Total:</th>
+                                                    <th class="text-center">{{$order->total}} .BDT</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="4" class="text-right">5% VAT:</th>
+                                                    <th class="text-center">{{$order->total*5/100}} .BDT</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="4" class="text-right">Grand Total:</th>
+                                                    <th class="text-center">{{$order->total+($order->total*5/100)}} .BDT
+                                                    </th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- col-lg-12 end here -->
+                        </div>
+                        <!-- End .row -->
+                    </div>
+                </div>
+                <!-- End .panel -->
+            </div>
+            <!-- col-lg-12 end here -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div>
+                    <button class="btn btn-success" onclick="printInvoice('invoice')"><i class="fa fa-print"></i> Print
+                        Invoice</button>
+                    <button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.invoice .table-row {
-	margin-left:-15px;
-	margin-right:-15px;
-	margin-top:25px;
-}
+    <style type="text/css">
+        body {
+            margin-top: 10px;
+            background: #eee;
+        }
 
-.invoice .payment-info {
-	font-weight:500;
-}
+    </style>
 
-.invoice .table-row .table>thead {
-	border-top:1px solid #ddd;
-}
-
-.invoice .table-row .table>thead>tr>th {
-	border-bottom:none;
-}
-
-.invoice .table>tbody>tr>td {
-	padding:8px 20px;
-}
-
-.invoice .invoice-total {
-	margin-right:-10px;
-	font-size:16px;
-}
-
-.invoice .last-row {
-	border-bottom:1px solid #ddd;
-}
-
-.invoice-ribbon {
-	width:85px;
-	height:88px;
-	overflow:hidden;
-	position:absolute;
-	top:-1px;
-	right:14px;
-}
-
-.ribbon-inner {
-	text-align:center;
-	/* -webkit-transform:rotate(45deg);
-	-moz-transform:rotate(45deg);
-	-ms-transform:rotate(45deg);
-	-o-transform:rotate(45deg); */
-	position:relative;
-	padding:7px 0;
-	left:-5px;
-	top:11px;
-	width:120px;
-	background-color:#66c591;
-	font-size:15px;
-	color:#fff;
-}
-
-.ribbon-inner:before,.ribbon-inner:after {
-	content:"";
-	position:absolute;
-}
-
-.ribbon-inner:before {
-	left:0;
-}
-
-.ribbon-inner:after {
-	right:0;
-}
-
-@media(max-width:575px) {
-	.invoice .top-left,.invoice .top-right,.invoice .payment-details {
-		text-align:center;
-	}
-
-	.invoice .from,.invoice .to,.invoice .payment-details {
-		float:none;
-		width:100%;
-		text-align:center;
-		margin-bottom:25px;
-	}
-
-	.invoice p.lead,.invoice .from p.lead,.invoice .to p.lead,.invoice .payment-details p.lead {
-		font-size:22px;
-	}
-
-	.invoice .btn {
-		margin-top:10px;
-	}
-}
-
-@media print {
-	.invoice {
-		width:900px;
-		height:800px;
-	}
-}
-
-</style>
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdeys">
-<div class="row">
-  <div class="col-sm-12">
-	  	<div class="panel panel-default invoice" id="invoice">
-		  <div class="panel-body">
-			
-		    <div class="row">
-
-				<div class="col-sm-6 top-left">
-					<i class="fa fa-rocket"></i>
-				</div>
-
-				<div class="col-sm-6 top-right">
-						<h3 class="marginright">INVOICE</h3>
-						<span class="marginright">{{$order->created_at}}</span>
-			    </div>
-
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-lg-4 from">
-					<p class="lead marginbottom">From : Kodeeo</p>
-					<p>House:14</p>
-					<p>Road:8</p>
-					<p>Sector:6</p>
-					<p>Uttara,Dhaka</p>
-					<p>Email:info@kodeeo.com</p>
-				</div>
-
-				<div class="col-lg-4 to">
-					<p class="lead marginbottom">To :</p>
-					<p>{{$order->receiver_first_name}}{{$order->receiver_last_name}}</p>
-					<p>{{$order->receiver_email}}</p>
-					<p>{{$order->receiver_address}}</p>
-					<!-- <p>Phone: 415-676-3600</p>
-					<p>Email: john@doe.com</p> -->
-
-			    </div>
-
-			    <div class="col-lg-4 text-right payment-details">
-					<p class="lead marginbottom payment-info">Payment details</p>
-					<p>Date:{{$order->created_at}}</p>
-					<p>VAT(5%):{{$order->total*5/100}} .BDT </p>
-					<p>Total Amount: {{$order->total+($order->total*5/100)}} .BDT</p>
-					<p>Account Name: Flatter</p>
-			    </div>
-
-			</div>
-
-			<div class="row table-row">
-				<table class="table table-striped">
-			      <thead>
-			        <tr>
-			          <th class="text-center" style="width:5%">Serial</th>
-			          <th style="width:50%">Item</th>
-			          <th class="text-right" style="width:15%">Quantity</th>
-			          <th class="text-right" style="width:15%">Unit Price</th>
-			          <th class="text-right" style="width:15%">Subtotal Price</th>
-			        </tr>
-			      </thead>
-			      <tbody>
-				  @foreach($order->details as $key=>$data)
-			        <tr>
-			          <td class="text-center">{{$key+1}}</td>
-			          <td>{{$data->item->name}}</td>
-			          <td class="text-right">{{$data->quantity}}</td>
-			          <td class="text-right">{{$data->unit_price}} .BDT</td>
-			          <td class="text-right">{{$data->subtotal}} .BDT</td>
-			        </tr>
-					@endforeach
-			      
-			       
-			         
-			       </tbody>
-			    </table>
-
-			</div>
-
-			<div class="col-xs-8 text-right pull-right invoice-total">
-					  <p>Subtotal : {{$data->subtotal}} .BDT</p>
-			          <p>Discount :null</p>
-			          <p>VAT (5%) :{{$order->total*5/100}} .BDT</p>
-			          <p>Total :{{$order->total+($order->total*5/100)}} .BDT</p>
-			</div>
-			
-			<div class="row">
-			<div class="col-xs-6 margintop">
-				<p class="lead marginbottom">THANK YOU!</p>
-
-				<button class="btn btn-success" id="invoice-print"  onclick="printInvoice('invoice')"><i class="fa fa-print"></i> Print Invoice</button>
-				<button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
-			</div>
-			</div>
-
-		  </div>
-		</div>
-	</div>
-</div>
-</div>
-
-<script type="text/javascript">
-        function printInvoice(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
+    <script type="text/javascript">
+        function printInvoice() {
+            var printContents = document.getElementById('invoice-print').innerHTML;
             var originalContents = document.body.innerHTML;
             document.body.innerHTML = printContents;
             window.print();
             document.body.innerHTML = originalContents;
         }
+
     </script>
-@endsection
+</body>
+
+</html>
